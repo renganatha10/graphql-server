@@ -19,3 +19,21 @@ export const getAllMessageByUser = async (_, { userId }) => {
 
   return channels;
 };
+
+export const getAllMessageByChannel = async (_, { channelId }) => {
+  const channels = await models.Message.findAll({
+    where: {
+      channel_id: channelId,
+    },
+    include: [
+      {
+        model: models.User,
+      },
+      {
+        model: models.Channel,
+      },
+    ],
+  });
+
+  return channels;
+};

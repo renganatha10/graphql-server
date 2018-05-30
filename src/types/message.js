@@ -14,10 +14,13 @@ const Message = `
 
   extend type Query {
     getAllMessageByUser(userId: ID!): [Message]
+  }
+
+  extend type Query {
     getAllMessageByChannel(channelId: ID!): [Message]
   }
 
-  extend type Message {
+  extend type Mutation {
     createMessage(input: createMessageInput): Message
   }
 `;
