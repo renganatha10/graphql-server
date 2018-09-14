@@ -20,6 +20,10 @@ const Channel = `
   extend type Mutation {
     createChannel(input: createChannelInput): Channel
   }
+
+  extend type Subscription {
+    channelCreated: Channel
+  }
 `;
 
 export default Channel;

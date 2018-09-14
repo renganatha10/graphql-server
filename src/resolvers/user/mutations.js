@@ -1,3 +1,3 @@
-import servicesAPI from './../../services';
+import models from './../../models';
 
-export const createUser = (_, { input }) => servicesAPI('CREATE', 'User', input);
+export const createUser = async (_, { input }) => await models.User.create({ input });

@@ -1,6 +1,4 @@
-import payloadCreator from './../../utils/payload-creator';
-import servicesAPI from './../../services';
+import models from './../../models';
 
-export const getAllUsers = () => servicesAPI('GETALL', 'User');
-export const getUserByIndex = (_, { id }) =>
-  servicesAPI('GETALL', 'User', payloadCreator('id', id));
+export const getAllUsers = async () => await models.User.findAll({});
+export const getUserByIndex = async (_, { id }) => await models.User.findById(id);

@@ -1,4 +1,5 @@
 import models, { sequelize } from './../../models';
+import pubsub, { CHANNEL_ADDED_TOPIC } from './subscriptions';
 
 export const createChannel = async (_, { input }) => {
   const { name, members, userId } = input;
@@ -14,10 +15,11 @@ export const createChannel = async (_, { input }) => {
         );
 
         return Promise.all(promises).then(ChannelMembers =>
-          Promise.resolve({ name: channel.name, ChannelMembers })
+          Promise.resolve({ id: channel.id, name: channel.name, ChannelMembers })
         );
       })
     );
+    pubsub.publish(CHANNEL_ADDED_TOPIC, { channelCreated: channels });
 
     return channels;
   } catch (err) {

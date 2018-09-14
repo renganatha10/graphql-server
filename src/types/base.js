@@ -19,9 +19,14 @@ const Base = `
       dummy: Boolean
     }
 
+    type Subscription {
+      dummy: String
+    }
+
     schema {
       query: Query
       mutation: Mutation
+      subscription: Subscription
     }
 `;
 
