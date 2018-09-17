@@ -22,7 +22,7 @@ const Channel = `
   }
 
   extend type Subscription {
-    channelCreated: Channel
+    channelCreated(userId: ID!) : Channel
   }
 `;
 
